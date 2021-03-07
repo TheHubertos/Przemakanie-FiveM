@@ -1,25 +1,18 @@
+-- T h e   H u b e r t o s#4606
+
 local playerPed = PlayerPedId()
 
-local telefonik = true
-local blaczkhajs = true 
-
 Citizen.CreateThread(function()
-  while ESX == nil do
-      TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-  end
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+    end
 end)
 
 Citizen.CreateThread(function()
-       while true do
-         Citizen.Wait(1200)
-        if IsEntityInWater(playerPed) and IsPedSwimming(playerPed) then
-          TriggerServerEvent('przemakanko:kasa')
-		  if telefonik == true then
-		  TriggerServerEvent('przemakanko:telefon')
-		   if blaczkhajs == true then
-		  TriggerServerEvent('przemakanko:brudna')
-		   end
-		  end
-      end
+    while true do
+        Citizen.Wait(100)
+        if IsEntityInWater(playerPed) then
+            TriggerServerEvent('wolfi:przemakanie')
+        end
     end
 end)
